@@ -1,0 +1,52 @@
+# bash基础知识
+
+## bash用来处理命令
+
+类似Windows下的命令行，bash 是shell 的一种，也是最流行的一种。bash用于执行用户输入的命令，它包含一套语法。
+
+## 应用实例：终端打开google搜索
+
+Windows/MacOS 都有快速启动软件，可以输入关键字，快速打开浏览器进行搜索。Linux下也可以。
+
+首先，保存以下内容为 `google` （或者你喜欢的别的名字）：
+
+	#!/bin/bash
+
+	if [[ $(echo $*) ]]; then
+ 		   searchterm="$*"
+	else
+	 	   read -p "Enter your search term: " searchterm
+	fi
+	searchterm=$(echo $searchterm | sed -e 's/\ /+/g')
+	xdg-open  "http://www.google.com/search?q=$searchterm"
+
+这里，文件开头的 `#!/bin/bash` 标示，这个文件是一个 bash 脚本。之后是判断语句：如果接收到一个字符串，就把它作为搜索内容，否则，提示用户输入一个字符串。最后，打开默认浏览器，跳转到对应的 google 搜索结果。
+
+之后，给刚才的`google`文件增加**可执行权限**：
+
+    chmod +x google
+
+这样，就可以在当前目录下，输入“google xxx”，实现搜索功能。类似，你可以扩展出很多bash的用途。
+
+## 环境变量
+
+如果想要在任何位置，都能实现输入“google xxx”就能搜索，则要把上面提到的文件目录添加到环境变量。
+
+`.bashrc` 文件一般在用户目录下，如果没有则新建一个。
+
+在文件最后一行加入，注意不要加入多余的空格：
+
+    export PATH=$PATH:/where/your/file
+
+然后执行下面语句，使之生效：
+
+	source ~/.bashrc
+
+
+---
+
+#### 相关链接
+
+- 鸟哥的Linux私房菜：[學習 Shell Scripts](http://linux.vbird.org/linux_basic/0340bashshell-scripts.php)
+- 本文示例参考了：[Google Search from Linux Terminal](http://superuser.com/questions/47192/google-search-from-linux-terminal)
+- 一个测试shell脚本的在线工具：[http://www.shellcheck.net/](http://www.shellcheck.net/)
