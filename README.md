@@ -2,6 +2,7 @@
 
 
 
+
 这些系列文章，用来整理我2015年正式切换到 Linux 系统下，学习和记录的知识。我的目的是：**让普通人能学会使用Linux操作系统**。
 
 
@@ -13,4 +14,6 @@
 
 ---
 
-v20161216
+本书地址：[https://www.gitbook.com/book/metaldudu/linux-newbie/](https://www.gitbook.com/book/metaldudu/linux-newbie/)
+
+from 2016年12月
