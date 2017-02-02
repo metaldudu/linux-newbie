@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>简介 · 学用Linux</title>
+        <title>2.3 bash · 学用Linux</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="1.0-linux-intro.html" />
+    <link rel="next" href="2.4-command.html" />
     
+    
+    <link rel="prev" href="2.2-shell.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -185,7 +187,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="2.3-bash.html">
+        <li class="chapter active" data-level="1.3.3" data-path="2.3-bash.html">
             
                 <a href="2.3-bash.html">
             
@@ -362,7 +364,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >简介</a>
+        <a href="." >2.3 bash</a>
     </h1>
 </div>
 
@@ -377,21 +379,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="linux&#x65B0;&#x624B;&#x7B14;&#x8BB0;">Linux&#x65B0;&#x624B;&#x7B14;&#x8BB0;</h1>
-<p>&#x8FD9;&#x4E9B;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#xFF0C;&#x7528;&#x6765;&#x6574;&#x7406;&#x6211;2015&#x5E74;&#x6B63;&#x5F0F;&#x5207;&#x6362;&#x5230; Linux &#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;&#x5B66;&#x4E60;&#x548C;&#x8BB0;&#x5F55;&#x7684;&#x77E5;&#x8BC6;&#x3002;&#x6211;&#x7684;&#x76EE;&#x7684;&#x662F;&#xFF1A;<strong>&#x8BA9;&#x666E;&#x901A;&#x4EBA;&#x80FD;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</strong>&#x3002;</p>
-<p>&#x4EE5;&#x4E0B;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#xFF1A;</p>
+                                <h1 id="bash&#x57FA;&#x7840;&#x77E5;&#x8BC6;">bash&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h1>
+<h2 id="bash&#x7528;&#x6765;&#x5904;&#x7406;&#x547D;&#x4EE4;">bash&#x7528;&#x6765;&#x5904;&#x7406;&#x547D;&#x4EE4;</h2>
+<p>bash &#x662F; shell &#x7684;&#x4E00;&#x79CD;&#xFF0C;&#x4E5F;&#x662F;&#x6700;&#x6D41;&#x884C;&#x7684;&#x4E00;&#x79CD;&#x3002;bash&#x7528;&#x4E8E;&#x6267;&#x884C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5B83;&#x5305;&#x542B;&#x4E00;&#x5957;&#x8BED;&#x6CD5;&#x3002;</p>
+<h2 id="&#x5E94;&#x7528;&#x5B9E;&#x4F8B;&#xFF1A;&#x7EC8;&#x7AEF;&#x6253;&#x5F00;google&#x641C;&#x7D22;">&#x5E94;&#x7528;&#x5B9E;&#x4F8B;&#xFF1A;&#x7EC8;&#x7AEF;&#x6253;&#x5F00;google&#x641C;&#x7D22;</h2>
+<p>Windows/MacOS &#x90FD;&#x6709;&#x5FEB;&#x901F;&#x542F;&#x52A8;&#x8F6F;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5FEB;&#x901F;&#x6253;&#x5F00;&#x6D4F;&#x89C8;&#x5668;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x3002;Linux&#x4E0B;&#x4E5F;&#x53EF;&#x4EE5;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x4FDD;&#x5B58;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x4E3A; <code>google</code> &#xFF08;&#x6216;&#x8005;&#x4F60;&#x559C;&#x6B22;&#x7684;&#x522B;&#x7684;&#x540D;&#x5B57;&#xFF09;&#xFF1A;</p>
+<pre><code>#!/bin/bash
+
+if [[ $(echo $*) ]]; then
+        searchterm=&quot;$*&quot;
+else
+        read -p &quot;Enter your search term: &quot; searchterm
+fi
+searchterm=$(echo $searchterm | sed -e &apos;s/\ /+/g&apos;)
+xdg-open  &quot;http://www.google.com/search?q=$searchterm&quot;
+</code></pre><p>&#x8FD9;&#x91CC;&#xFF0C;&#x6587;&#x4EF6;&#x5F00;&#x5934;&#x7684; <code>#!/bin/bash</code> &#x6807;&#x793A;&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x662F;&#x4E00;&#x4E2A; bash &#x811A;&#x672C;&#x3002;&#x4E4B;&#x540E;&#x662F;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#xFF1A;&#x5982;&#x679C;&#x63A5;&#x6536;&#x5230;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5C31;&#x628A;&#x5B83;&#x4F5C;&#x4E3A;&#x641C;&#x7D22;&#x5185;&#x5BB9;&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x63D0;&#x793A;&#x7528;&#x6237;&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x6253;&#x5F00;&#x9ED8;&#x8BA4;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x8DF3;&#x8F6C;&#x5230;&#x5BF9;&#x5E94;&#x7684; google &#x641C;&#x7D22;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x4E4B;&#x540E;&#xFF0C;&#x7ED9;&#x521A;&#x624D;&#x7684;<code>google</code>&#x6587;&#x4EF6;&#x589E;&#x52A0;<strong>&#x53EF;&#x6267;&#x884C;&#x6743;&#x9650;</strong>&#xFF1A;</p>
+<pre><code>chmod +x google
+</code></pre><p>&#x8FD9;&#x6837;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x8F93;&#x5165;&#x201C;google xxx&#x201D;&#xFF0C;&#x5B9E;&#x73B0;&#x641C;&#x7D22;&#x529F;&#x80FD;&#x3002;&#x7C7B;&#x4F3C;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x6269;&#x5C55;&#x51FA;&#x5F88;&#x591A;bash&#x7684;&#x7528;&#x9014;&#x3002;</p>
+<h2 id="&#x73AF;&#x5883;&#x53D8;&#x91CF;">&#x73AF;&#x5883;&#x53D8;&#x91CF;</h2>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x5728;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#xFF0C;&#x90FD;&#x80FD;&#x5B9E;&#x73B0;&#x8F93;&#x5165;&#x201C;google xxx&#x201D;&#x5C31;&#x80FD;&#x641C;&#x7D22;&#xFF0C;&#x5219;&#x8981;&#x628A;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x6DFB;&#x52A0;&#x5230;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3002;</p>
+<p><code>.bashrc</code> &#x6587;&#x4EF6;&#x4E00;&#x822C;&#x5728;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5219;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x3002;</p>
+<p>&#x5728;&#x6587;&#x4EF6;&#x6700;&#x540E;&#x4E00;&#x884C;&#x52A0;&#x5165;&#xFF0C;&#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x52A0;&#x5165;&#x591A;&#x4F59;&#x7684;&#x7A7A;&#x683C;&#xFF1A;</p>
+<pre><code>export PATH=$PATH:/where/your/file
+</code></pre><p>&#x7136;&#x540E;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x8BED;&#x53E5;&#xFF0C;&#x4F7F;&#x4E4B;&#x751F;&#x6548;&#xFF1A;</p>
+<pre><code>source ~/.bashrc
+</code></pre><hr>
+<h4 id="&#x76F8;&#x5173;&#x94FE;&#x63A5;">&#x76F8;&#x5173;&#x94FE;&#x63A5;</h4>
 <ul>
-<li>&#x672C;&#x4EBA;&#x4E5F;&#x662F;&#x65B0;&#x624B;&#xFF0C;&#x56E0;&#x6B64;&#x758F;&#x6F0F;&#x9519;&#x8BEF;&#x5F88;&#x591A;&#xFF0C;&#x6B22;&#x8FCE;&#x4E0E;&#x6211;&#x8BA8;&#x8BBA;&#x3002;&#x90AE;&#x4EF6;&#xFF1A;metalduduATgmailDOTcom</li>
-<li>&#x5F15;&#x7528;&#x90E8;&#x5206;&#x4F1A;&#x6807;&#x6CE8;&#x94FE;&#x63A5;&#xFF0C;&#x4F46;&#x4E2D;&#x6587;&#x7F51;&#x7EDC;&#x4E0B;&#x62F7;&#x8D1D;&#x4E25;&#x91CD;&#xFF0C;&#x4E0D;&#x4FDD;&#x8BC1;&#x6765;&#x6E90;&#x51C6;&#x786E;&#x3002;</li>
+<li>&#x9E1F;&#x54E5;&#x7684;Linux&#x79C1;&#x623F;&#x83DC;&#xFF1A;<a href="http://linux.vbird.org/linux_basic/0340bashshell-scripts.php" target="_blank">&#x5B78;&#x7FD2; Shell Scripts</a></li>
+<li>&#x672C;&#x6587;&#x793A;&#x4F8B;&#x53C2;&#x8003;&#x4E86;&#xFF1A;<a href="http://superuser.com/questions/47192/google-search-from-linux-terminal" target="_blank">Google Search from Linux Terminal</a></li>
+<li>&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;shell&#x811A;&#x672C;&#x7684;&#x5728;&#x7EBF;&#x5DE5;&#x5177;&#xFF1A;<a href="http://www.shellcheck.net/" target="_blank">http://www.shellcheck.net/</a></li>
 </ul>
-<p>&#x672C;&#x4E66;&#x53C2;&#x8003;&#x6587;&#x6863;&#xFF1A;</p>
-<ul>
-<li><a href="http://linux.vbird.org/" target="_blank">&#x9CE5;&#x54E5;&#x7684; Linux &#x79C1;&#x623F;&#x83DC;</a></li>
-<li><a href="http://www.92csz.com/study/linux/" target="_blank">Linux&#x5165;&#x95E8;&#x6559;&#x7A0B; by clairelume</a></li>
-</ul>
-<hr>
-<p>from 2016&#x5E74;12&#x6708; / update 20170202 / by <a href="http://mrdu.me/" target="_blank">metaldudu</a></p>
-<p>&#x672C;&#x4E66;&#x5730;&#x5740;&#xFF1A;<a href="https://www.gitbook.com/book/metaldudu/linux-newbie/" target="_blank">https://www.gitbook.com/book/metaldudu/linux-newbie/</a></p>
 
                                 
                                 </section>
@@ -419,8 +439,12 @@
 
             
                 
+                <a href="2.2-shell.html" class="navigation navigation-prev " aria-label="Previous page: 2.2 shell">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="1.0-linux-intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 1. Linux介绍">
+                
+                <a href="2.4-command.html" class="navigation navigation-next " aria-label="Next page: 2.4 常用命令">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -431,7 +455,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"简介","level":"1.1","depth":1,"next":{"title":"1. Linux介绍","level":"1.2","depth":1,"path":"1.0-linux-intro.md","ref":"1.0-linux-intro.md","articles":[{"title":"1.1 和Windows的不同","level":"1.2.1","depth":2,"path":"1.1-vs-windows.md","ref":"1.1-vs-windows.md","articles":[]},{"title":"1.2 系统安装","level":"1.2.2","depth":2,"path":"1.2-install.md","ref":"1.2-install.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学用Linux","gitbook":">=2.0.0"},"file":{"path":"README.md","mtime":"2017-02-02T12:46:53.499Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-02T10:13:25.921Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.3 bash","level":"1.3.3","depth":2,"next":{"title":"2.4 常用命令","level":"1.3.4","depth":2,"path":"2.4-command.md","ref":"2.4-command.md","articles":[]},"previous":{"title":"2.2 shell","level":"1.3.2","depth":2,"path":"2.2-shell.md","ref":"2.2-shell.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学用Linux","gitbook":">=2.0.0"},"file":{"path":"2.3-bash.md","mtime":"2017-02-02T10:40:38.653Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-02T10:13:25.921Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
